@@ -14,13 +14,16 @@ from selenium.webdriver.support.ui  import WebDriverWait
 
 # driver = webdriver.Chrome(r"C:\Users\khoim\Documents\PortableApps\chromedriver.exe")
 driver = webdriver.Chrome()
-driver.get("https://www.facebook.com/groups/ITjobsandinternshipsvietnam/")
+driver.get("https://www.facebook.com/groups/870665749718859/")
 
-startScrpit    = time.time()
+startscript    = time.time()
 countAccept    = 0
 countFail      = 0
 
 posts      = []
+
+
+
 links      = []
 times      = []
 scripts    = []
@@ -38,7 +41,7 @@ frnum         = 0
 key           = 0
 duplicatesAll = 0
 
-while frnum < 100:
+while frnum < 10000:
     try:
         links   = driver.find_elements_by_xpath('//div[@data-ad-preview="message"]')
         times   = driver.find_elements_by_xpath('//a[@class="_5pcq"]//abbr')
@@ -66,9 +69,9 @@ while frnum < 100:
                             idp = -1
                     
                         if (idp in ids and idp != -1):
-                                duplicatesAll += 1;
+                                duplicatesAll += 1
                                 print("Post thứ {0:3} bị trùng trong {1:4.0f} ms ".format(duplicatesAll,(time.time()-start)*1000))
-                                break;
+                                break
 
                         duplicates.append(idx)
                     else:
@@ -86,7 +89,7 @@ while frnum < 100:
                     print("Post thứ {0:3} lấy thành công trong {1:4.0f} ms ".format(countFail + len(posts), (time.time() - start) * 1000))
                     countAccept += 1
 
-                    break;
+                    break
 
                 except:
                     if count == 1:
@@ -99,15 +102,15 @@ while frnum < 100:
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     except:
         key = 1
-        break;        
+        break       
         
 driver.quit()
 
 print("Post đã có : ", len(posts))
 print("Post lấy thành công : ", countAccept)
 print("Post lấy thất bại : ", countFail)
-print("Tổng thời gian thực hiện : {:7.6} s".format(time.time() - startScrpit))
-print("Tổng trung bình lấy 1 post : {:7.6} s".format((time.time() - startScrpit) / max(countAccept, 1)))
+print("Tổng thời gian thực hiện : {:7.6} s".format(time.time() - startscript))
+print("Tổng trung bình lấy 1 post : {:7.6} s".format((time.time() - startscript) / max(countAccept, 1)))
 
 
 df = pd.DataFrame({'Id':ids,

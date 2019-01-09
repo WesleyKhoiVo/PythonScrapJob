@@ -14,16 +14,13 @@ from selenium.webdriver.support.ui  import WebDriverWait
 
 # driver = webdriver.Chrome(r"C:\Users\khoim\Documents\PortableApps\chromedriver.exe")
 driver = webdriver.Chrome()
-driver.get("https://www.facebook.com/groups/870665749718859/")
+driver.get("https://www.facebook.com/groups/ITjobsandinternshipsvietnam/")
 
-startscript    = time.time()
+startScrpit    = time.time()
 countAccept    = 0
 countFail      = 0
 
 posts      = []
-
-
-
 links      = []
 times      = []
 scripts    = []
@@ -102,15 +99,15 @@ while frnum < 10000:
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     except:
         key = 1
-        break       
+        break        
         
 driver.quit()
 
 print("Post đã có : ", len(posts))
 print("Post lấy thành công : ", countAccept)
 print("Post lấy thất bại : ", countFail)
-print("Tổng thời gian thực hiện : {:7.6} s".format(time.time() - startscript))
-print("Tổng trung bình lấy 1 post : {:7.6} s".format((time.time() - startscript) / max(countAccept, 1)))
+print("Tổng thời gian thực hiện : {:7.6} s".format(time.time() - startScrpit))
+print("Tổng trung bình lấy 1 post : {:7.6} s".format((time.time() - startScrpit) / max(countAccept, 1)))
 
 
 df = pd.DataFrame({'Id':ids,
@@ -123,6 +120,6 @@ df = pd.DataFrame({'Id':ids,
                    'Years':years,
                    })
 
-writer = ExcelWriter("Posts.xlsx")
+writer = ExcelWriter("IT Jobs and Internship Vietnam.xlsx")
 df.to_excel(writer)
 writer.save()

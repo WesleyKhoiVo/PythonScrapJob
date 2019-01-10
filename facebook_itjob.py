@@ -64,9 +64,9 @@ while frnum < 100:
                             idp = -1
                     
                         if (idp in ids and idp != -1):
-                                duplicatesAll += 1;
+                                duplicatesAll += 1
                                 print("Post thứ {0:3} bị trùng trong {1:4.0f} ms ".format(duplicatesAll,(time.time()-start)*1000))
-                                break;
+                                break
 
                         duplicates.append(idx)
                     else:
@@ -84,7 +84,7 @@ while frnum < 100:
                     print("Post thứ {0:3} lấy thành công trong {1:4.0f} ms ".format(countFail + len(posts), (time.time() - start) * 1000))
                     countAccept += 1
 
-                    break;
+                    break
 
                 except:
                     if count == 1:
@@ -97,7 +97,7 @@ while frnum < 100:
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     except:
         key = 1
-        break;        
+        break        
         
 driver.quit()
 

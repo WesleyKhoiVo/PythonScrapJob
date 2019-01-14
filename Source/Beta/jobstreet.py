@@ -78,7 +78,4 @@ df = pd.DataFrame({'Name':ten,
 
 writer = ExcelWriter("../../Result/jobstreet.xlsx")
 df.to_excel(writer)
-writer.save() 
-
-
-
+writer.save()

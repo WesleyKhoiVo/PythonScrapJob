@@ -1,47 +1,35 @@
 # -*- coding: utf-8 -*-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.keys import Keys
-from pandas import ExcelWriter
-import pandas                       as pd
+"""
+Created on Mon Jan  7 07:44:03 2019
 
+@author: lengoyenphuong
+"""
+from selenium                          import webdriver
+from pandas                            import ExcelWriter
+from selenium.webdriver.chrome.options import Options
+import pandas                          as pd
 
-# driver firefox
-#driver = webdriver.Firefox(executable_path=r'C:\Users\Admin\Downloads\geckodriver-v0.23.0-win64\geckodriver.exe')
+chrome_options = Options()
+chrome_options.add_extension(r'../../Tools/ublock_extension.crx')
+driver = webdriver.Chrome(r"../../Tools/chromedriver.exe", options = chrome_options)
 
-# driver = webdriver.Chrome()
-#ChromeOptions = webdriver.ChromeOptions()
-#ChromeOptions.add_argument('--disable-browser-side-navigation')
-#ChromeOptions.add_argument(' - incognito')
-driver = webdriver.Chrome(executable_path=r'C:\Users\Admin\Anaconda3\Lib\site-packages\selenium\webdriver\chrome\chromedriver.exe')
-
-ten= []
-theloai=[]
-diachi= []
-motacongviec= []
-yeucaukinhnghiem=[]
-#loiich=[]
-thoigianpost=[]
-count = 0
+ten              = []
+theloai          = []
+diachi           = []
+motacongviec     = []
+yeucaukinhnghiem = []
+thoigianpost     = []
 
 def checkElementValue(element, typeGet): 
     try:
-        print('element, typeGet ===> ', element, typeGet);
         if typeGet == 'id':
             return driver.find_element_by_id(element).text
-        else if typeGet == 'class': 
-            return driver.find_element_by_class_name(element).text
-        else if typeGet == 'tag':
-            return driver.find_element_by_tag_name(element).text
+        return driver.find_element_by_class_name(element).text
     except:
         return ''
-        
 
 for i in range (1,2):    
-    driver.get("https://www.jobstreet.vn/j?l=&p="+str(i)+"&q=data&sp=homepage")
+    driver.get("https://www.jobstreet.vn/j?l=&p=" + str(i) + "&q=data&sp=homepage")
 
     link = driver.find_elements_by_class_name('jobtitle')
     arrayLink = []
@@ -52,27 +40,22 @@ for i in range (1,2):
     for x in arrayLink:
         driver.get(x)
         driver.implicitly_wait(3)
+        
         try: 
             try:
-                #name = driver.find_element_by_id('company_name').text
                 name = checkElementValue('company_name', 'id')
-                title = checkElementValue('position_title', 'id')
-                address = checkElementValue('address', 'id')
-                mota = checkElementValue('job_description', 'id')
-                experience = checkElementValue('years_of_experience', 'id')
-                thoigian = ''
-                print ('name_1: ', name)
-                print('1: ', x)       
+                title = driver.find_element_by_id('position_title').text
+                address = driver.find_element_by_id('address').text
+                mota = driver.find_element_by_id('job_description').text
+                experience = driver.find_element_by_id('years_of_experience').text
+                thoigian = ''      
             except:
-                #name = driver.find_element_by_class_name('company').text
                 name = checkElementValue('company', 'class')
-                title = checkElementValue('h1', 'tag')
-                address = checkElementValue('location', 'class')
-                mota = checkElementValue('summary', 'class')
-                thoigian = checkElementValue('date', 'class')
-                experience = ''
-                print ('name_2: ', name)
-                print('2: ', x)
+                title = driver.find_element_by_tag_name('h1').text
+                address = driver.find_element_by_class_name('location').text
+                mota = driver.find_element_by_class_name('summary').text
+                thoigian = driver.find_element_by_class_name('date').text
+                experience = ' '
                 
             ten.append(name)
             theloai.append(title)
@@ -82,7 +65,9 @@ for i in range (1,2):
             thoigianpost.append(thoigian)
         except: 
             print('Fail: ', x)
-    
+
+driver.quit()
+  
 df = pd.DataFrame({'Name':ten,
                    'Title':theloai,
                    'Address':diachi,
@@ -91,9 +76,6 @@ df = pd.DataFrame({'Name':ten,
                    'Time':thoigianpost
                    })
 
-writer = ExcelWriter("jobstreet.xlsx")
+writer = ExcelWriter("../../Result/jobstreet.xlsx")
 df.to_excel(writer)
-writer.save() 
-
-
-
+writer.save()

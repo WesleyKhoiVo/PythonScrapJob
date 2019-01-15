@@ -96,6 +96,6 @@ df = pd.DataFrame({'Name':ten,
                    'Date':postngay
                    })
 
-writer = ExcelWriter("careebuilder.xlsx")
+writer = ExcelWriter("../../Result/careebuilder.xlsx")
 df.to_excel(writer)
 writer.save() 

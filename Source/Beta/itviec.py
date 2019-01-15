@@ -45,7 +45,7 @@ def checkElementValue(element, typeGet):
         
 
   
-for i in range (1,4):    
+for i in range (1,10):    
     driver.get("https://itviec.com/it-jobs/data?page="+str(i))
 
     link = driver.find_elements_by_css_selector ('.title a')
@@ -90,6 +90,6 @@ df = pd.DataFrame({'Name':ten,
                    'Date':postngay
                    })
 
-writer = ExcelWriter("itviec.xlsx")
+writer = ExcelWriter("../../Result/itviec.xlsx")
 df.to_excel(writer)
 writer.save() 

@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 from pandas import ExcelWriter
 import xlwt
 from xlwt import Workbook
@@ -11,8 +12,9 @@ import pandas                       as pd
 
 option = webdriver.ChromeOptions()
 option.add_argument(' - incognito')
+chrome_options = Options()
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(r"../../Tools/chromedriver.exe", options = chrome_options)
 driver.get("https://itviec.com/it-jobs/data")
 
 elem = driver.find_element_by_xpath('//*[@id="job-mail-subscribe-modal"]/div/div/div/button/span')

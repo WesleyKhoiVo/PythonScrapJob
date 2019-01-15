@@ -71,7 +71,7 @@ while frnum < 1000:
                     months.append(int(postTime.split(',')[1].split('/')[1]))
                     years.append(int(postTime.split(',')[1].split('/')[2]))
 
-                    break;
+                    break
 
                 
                 except:
@@ -83,7 +83,7 @@ while frnum < 1000:
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         
     except:
-        break;        
+        break       
         
 driver.quit()
 

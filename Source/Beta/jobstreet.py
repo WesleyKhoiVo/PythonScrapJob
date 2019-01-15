@@ -28,7 +28,7 @@ def checkElementValue(element, typeGet):
     except:
         return ''
 
-for i in range (1,2):    
+for i in range (1,50):    
     driver.get("https://www.jobstreet.vn/j?l=&p=" + str(i) + "&q=data&sp=homepage")
 
     link = driver.find_elements_by_class_name('jobtitle')
@@ -39,7 +39,7 @@ for i in range (1,2):
     
     for x in arrayLink:
         driver.get(x)
-        driver.implicitly_wait(3)
+        # driver.implicitly_wait(0.5)
         
         try: 
             try:
@@ -77,5 +77,7 @@ df = pd.DataFrame({'Name':ten,
                    })
 
 writer = ExcelWriter("../../Result/jobstreet.xlsx")
+
+
 df.to_excel(writer)
 writer.save()

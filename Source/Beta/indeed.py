@@ -45,7 +45,7 @@ def checkElementValue(element, typeGet):
         
 
   
-for i in range (0,50):    
+for i in range (0,100):    
     driver.get("https://vn.indeed.com/jobs?q=Data&start="+str(i)+"0")
 
     link = driver.find_elements_by_css_selector ('.jobtitle a')

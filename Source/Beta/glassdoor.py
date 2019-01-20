@@ -149,9 +149,9 @@ if __name__ == "__main__":
     login(driver, username, password)
     data_out = []
     city = "Ho Chi Minh"
-    search(driver, city, 'data')
+    search(driver, city, 'Data Scientist')
     url = driver.current_url
-    links = get_all_links(15, url)
+    links = get_all_links(1, url)
     flatten = [item for sublist in links for item in sublist]
     remove_duplicates = list(set(flatten))
     list_result = []
@@ -165,6 +165,5 @@ if __name__ == "__main__":
 
     writer = ExcelWriter('../../Result/glassdoor.xlsx')
     df.to_excel(writer, index=False)
-    df.to_excel(writer, startrow=len(df) + 2, index=False)
     writer.save()    
     driver.quit()

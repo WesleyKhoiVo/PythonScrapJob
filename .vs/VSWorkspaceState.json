@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Result",
+    "\\Source",
+    "\\Source\\Beta",
+    "\\Source\\Beta\\Experiment",
+    "\\Source\\Final"
   ],
   "PreviewInSolutionExplorer": false
 }

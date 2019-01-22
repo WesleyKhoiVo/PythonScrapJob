@@ -23,11 +23,12 @@ collaboration    = []
 
 
 if __name__ == "__main__":
-    for i in range(0, 30):
+    for i in range(0, 15):
         driver.get('https://www.udacity.com/courses/school-of-data-science')
         time.sleep(5)
         driver.find_element_by_css_selector('.modal-close.white-shadow').click()
-        link = driver.find_element_by_css_selector('.card-wrapper.is-collapsed')
+        time.sleep(3)
+        link = driver.find_element_by_css_selector('.card-heading[_ngcontent-c25] a[_ngcontent-c25]')
         arrayLink = []
         for i in link:
             j = i.get_attribute('href')

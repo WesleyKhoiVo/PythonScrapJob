@@ -15,7 +15,7 @@ import pandas                       as pd
 #ChromeOptions = webdriver.ChromeOptions()
 #ChromeOptions.add_argument('--disable-browser-side-navigation')
 #ChromeOptions.add_argument(' - incognito')
-driver = webdriver.Chrome(executable_path=r'C:\Users\Tam\Anaconda3\Lib\site-packages\selenium\webdriver\chrome\chromedriver.exe')
+driver = webdriver.Chrome(r"../../Tools/chromedriver.exe")
 
 ten = []
 theloai=[]

@@ -98,6 +98,6 @@ df = pd.DataFrame({'Id':ids,
                    'Years':years,
                    })
 
-writer = ExcelWriter("../../Result/Posts.xlsx")
+writer = ExcelWriter("../../Result/IT Jobs and Internship Vietnam_Data Science Only.xlsx")
 df.to_excel(writer)
 writer.save()

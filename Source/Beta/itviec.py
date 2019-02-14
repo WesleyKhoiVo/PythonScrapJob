@@ -45,7 +45,7 @@ def checkElementValue(element, typeGet):
         
 
   
-for i in range (1,2):    
+for i in range (1,4):    
     driver.get("https://itviec.com/it-jobs/data?page="+str(i))
 
     link = driver.find_elements_by_css_selector ('.title a')
@@ -56,7 +56,7 @@ for i in range (1,2):
     
     for x in arrayLink:
         driver.get(x)
-        driver.implicitly_wait(3)
+        #driver.implicitly_wait(3)
         try: 
             name = checkElementValue('name', 'class')
             title = checkElementValue('job_title', 'class')

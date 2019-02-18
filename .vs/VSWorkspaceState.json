@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Result",
     "\\Source",
     "\\Source\\Beta",
-    "\\Source\\Beta\\Experiment",
-    "\\Source\\Final"
+    "\\Source\\Beta\\Experiment"
   ],
+  "SelectedNode": "\\Source\\Beta\\Experiment\\Sklearn TFIDF.py",
   "PreviewInSolutionExplorer": false
 }

@@ -16,8 +16,8 @@ import pandas                          as pd
 import numpy                           as np
 import requests
 
-username = "khoiminhvo1996@hotmail.com" 
-password = "Khoi1996"
+username = "" 
+password = ""
 
 def init_driver():
     chrome_options = Options()
